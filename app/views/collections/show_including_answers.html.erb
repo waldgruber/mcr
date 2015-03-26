@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @collection.name %>
+</p>
+
+<hr>
+
+<% @collection.questions.each do |question| %>
+
+  <div style="page-break-inside: avoid;">
+    <p>
+      <strong>Frage:</strong>
+      <%= question.content %> <br/>
+      Quelle: 
+      <%= question.reference %>
+
+    </p>
+    <% question.answers.each do |answer| %>
+      <%= answer.correct ? " ☑ " : " ☐ " %> 
+      <%= answer.content %> <br/>
+
+    <% end %>
+  </div>
+<% end %>  

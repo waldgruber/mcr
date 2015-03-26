@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Result: <strong> <%= @points %> </strong> points 
+  <br>
+  <strong><%= @unanswered %></strong> questions unanswered, 
+  <strong><%= @answered_once %></strong> questions answered once, 
+  <strong><%= @answered_twice %></strong> questions answered twice
+  <%= link_to 'Next Question', learn_collection_path(@question.collection) %> 
+</p>
+
+  <strong> <%= @question.content %> </strong> <br>
+
+<% @question.answers.each do |answer| %>
+  <hr> 
+  <p>
+    <%= answer.content %> 
+    <br> 
+    correct answer <strong> <%= answer.correct %> </strong> 
+    your answer <strong> <%= @given[answer.id] %> </strong>
+    <br> 
+    Comment: <%= answer.comment %>
+  </p>
+
+<% end %>

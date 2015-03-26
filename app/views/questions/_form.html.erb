@@ -1,0 +1,39 @@
+<%= simple_form_for(@question) do |f_question| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f_question.text_area :content, style: "width:100%", placeholder: "content" %>
+    <br>
+    <%= f_question.text_field :reference, style: "width:100%", placeholder: "reference" %>
+    <br>
+    <%= f_question.association :collection %>
+  </div>
+
+  <%# schleife %>
+  <h2> Antworten </h2>
+  <%= f_question.fields_for :answers do |f_answer| %>
+    <strong> Antwort <%= f_answer.index + 1 %> </strong>
+      <%= f_answer.label :correct %>
+      <%= f_answer.check_box :correct %>
+    <div class="field">
+      <%= f_answer.text_area :content, style: "width:100%", placeholder: "content"  %>
+      <br>
+      <%= f_answer.text_field :comment, style: "width:100%", placeholder: "comment" %>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f_question.submit %>
+  </div>
+<% end %>

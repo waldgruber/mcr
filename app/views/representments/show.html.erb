@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @representment.user_id %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @representment.question_id %>
+</p>
+
+<p>
+  <strong>Collection:</strong>
+  <%= @representment.collection_id %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @representment.rate %>
+</p>
+
+<%= link_to 'Edit', edit_representment_path(@representment) %> |
+<%= link_to 'Back', representments_path %>

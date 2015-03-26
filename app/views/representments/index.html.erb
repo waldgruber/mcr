@@ -1,0 +1,31 @@
+<h1>Listing representments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Question</th>
+      <th>Collection</th>
+      <th>Rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @representments.each do |representment| %>
+      <tr>
+        <td><%= representment.user_id %></td>
+        <td><%= representment.question_id %></td>
+        <td><%= representment.collection_id %></td>
+        <td><%= representment.rate %></td>
+        <td><%= link_to 'Show', representment %></td>
+        <td><%= link_to 'Edit', edit_representment_path(representment) %></td>
+        <td><%= link_to 'Destroy', representment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Representment', new_representment_path %>

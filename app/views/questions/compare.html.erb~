@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Ergebnis: <strong> <%= @points %> </strong> Punkte 
+  <br>
+  noch <strong><%= @unanswered %></strong> Frage(n) unbeantwortet, 
+  noch <strong><%= @answered_once %></strong> Frage(n) zweimal zu beantworten, 
+  noch <strong><%= @answered_twice %></strong> Frage(n) einmal zu beantworten
+  <%= link_to 'Next Question', learn_collection_path(@question.collection) %> 
+</p>
+
+  <strong> <%= @question.content %> </strong> <br>
+
+<% @question.answers.each do |answer| %>
+  <hr> 
+  <p>
+    <%= answer.content %> 
+    <br> 
+    richtige Antwort <strong> <%= answer.correct %> </strong> 
+    deine Antwort <strong> <%= @given[answer.id] %> </strong>
+    <br> 
+    Kommentar: <%= answer.comment %>
+  </p>
+
+<% end %>

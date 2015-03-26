@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> <%= @question.content %> </strong>
+</p>
+
+<%= form_for(@question, url: {action: :compare} ) do |f_question| %>
+
+  <% @question.answers.shuffle.each do |answer| %>
+    <%= f_question.fields_for :answers,answer do |f_answer| %>
+      <p>
+        <%= f_answer.check_box :correct, checked: false %>
+        <%= answer.content %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f_question.submit "compare answers" %>
+  </div>
+
+<% end %>
